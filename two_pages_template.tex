@@ -1,0 +1,161 @@
+\documentclass[
+    a4paper,
+	% maincolor=cvgreen,
+	% sidecolor=gray!50,
+	% sectioncolor=red,
+	% subsectioncolor=orange,
+	% itemtextcolor=black!80,
+	% sidebarwidth=0.4\paperwidth,
+	% topbottommargin=0.03\paperheight,
+	% leftrightmargin=20pt,
+	% profilepicsize=4.5cm,
+	profilepicborderwidth=2pt,
+]{cv}
+
+\usepackage{microtype}
+\usepackage{ragged2e}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{amssymb}
+
+
+%---------------------------------------------------------------------------
+%                          PERSONAL INFORMATION
+%               This is included in the first page sidebar
+%---------------------------------------------------------------------------
+
+% This is mandatory
+\cvname{John SMITH}
+\cvjobtitle{CEO of SMITH \& co. and professional chiller}
+
+% Optional profile picture
+\cvprofilepic{pics/profile}
+
+% Personnal info
+\cvbirthday{January 1st 1970}
+\cvaddress{Paris, France}
+\cvphone{+33 6 xx xx xx xx}
+%\cvsite{}
+\cvmail{your@email.com}
+\cvcustom{\faFlag}{French}
+\cvcustom{\faLinkedin}{\href{https://linkedin.com/in/your_linkedin_link}{john-smith}}
+\cvcustom{\faGithub}{\href{https://github.com/viccol961}{viccol961}}
+\cvcustom{\faReddit}{\href{https://reddit.com/u/viccol961}{viccol961}}
+
+
+% If using XeLaTeX or LuaLaTeX, fontawesome5 and academicons icons available
+% If using pdfLaTeX, fontawesome icons available
+
+
+
+%---------------------------------------------------------------------------
+%                            SIDEBAR 1st PAGE
+%---------------------------------------------------------------------------
+
+\addtofrontsidebar{
+    % include flags from https://github.com/gosquared/flags
+	\graphicspath{{pics/}}
+
+	\profilesection{About Me}
+	\aboutme{
+		Say something about yourself, your likes, your hobbies and so much more !
+	}
+
+	\profilesection{Languages}
+	\namedskill{\flag{FR.png}}{French}{Native}
+	\namedskill{\flag{GB.png}}{English}{Bilingual}
+	\pointskill{\flag{ES.png}}{Spanish}{3}
+	\pointskill{\flag{CN.png}}{Mandarin}{2}
+
+	\profilesection{Achievements}
+	\skill{\faCar}{Driver's license}
+	\skill{\faPlane}{Private Pilot Licence}
+	\skill{\faGraduationCap}{Cambridge C1}
+}
+
+
+%---------------------------------------------------------------------------
+%                            SIDEBAR 2nd PAGE
+%---------------------------------------------------------------------------
+
+\addtobacksidebar{
+	\profilesection{Programming skills}
+	\pointskill{}{\LaTeX}{4}[4]
+	\pointskill{}{Web development}{3}[4]
+	\skill[1em]{\faCompress}{JavaScript}
+	\skill[1em]{\faCompress}{React}
+	\skill[1em]{\faCompress}{Php}
+	\skill[1em]{\faCompress}{HTML \& CSS}
+	\pointskill{}{Python}{3}[4]
+
+	\profilesection{Wheel charts}
+	\wheelchart{3.7em}{2em}{%
+	20/3em/maincolor!50/Chill,
+	15/3em/maincolor!15/Play,
+	30/4em/maincolor!40/Sleep,
+	20/3em/maincolor!20/Eat
+	}
+}
+
+
+\begin{document}
+
+
+\makefrontsidebar
+
+\cvsection{section}
+\cvsubsection{Subsection}
+\begin{cvtable}
+	\cvitem{<dates>}{<cv-item title>}{<location>}{<optional: description>}
+\end{cvtable}
+
+\cvsection{cvitem}
+\cvsubsection{Multi-line with longer description}
+\begin{cvtable}
+	\cvitem{date}{Description}{location}{Some longer and more detailed
+		description, that takes two lines of space instead of only one.}
+	\cvitem{date}{Description}{location}{Some longer and more detailed
+		description, that takes two lines of space instead of only one.}
+	\cvitem{date}{Description}{location}{Some longer and more detailed
+		description, that takes two lines of space instead of only one.}
+\end{cvtable}
+
+\cvsubsection{One-line without description}
+\begin{cvtable}
+	\cvitem{Award}{One-line description}{Sponsor}{}
+	\cvitem{Award}{One-line description}{Sponsor}{}
+	\cvitem{Award}{One-line description}{Sponsor}{}
+\end{cvtable}
+
+\cvsection{cvitemshort}
+\cvsubsection{One-line}
+\begin{cvtable}
+	\cvitemshort{Key}{Some further description}
+	\cvitemshort{Key}{Some further description}
+	\cvitemshort{Key}{Some further description}
+\end{cvtable}
+
+\cvsubsection{Multi-line with longer description}
+\begin{cvtable}
+	\cvitemshort{Key}{Some further description. Can fill even more than
+		only one single line while still keeping the correct indendation level.}
+	\cvitemshort{Key}{Some further description. Can fill even more than
+		only one single line while still keeping the correct indendation level.}
+	\cvitemshort{Key}{Some further description. Can fill even more than
+		only one single line while still keeping the correct indendation level.}
+\end{cvtable}
+
+\cvsection{cvpubitem}
+\begin{cvtable}
+	\cvpubitem{Publication title}{Authors}{Journal}{Year}
+	\cvpubitem{Publication title}{Authors}{Journal}{Year}
+	\cvpubitem{Publication title that is spanning over multiple lines and still
+		does not look too bad}{Authors}{Journal}{Year}
+\end{cvtable}
+
+
+\newpage
+\makebacksidebar
+
+
+\end{document}
