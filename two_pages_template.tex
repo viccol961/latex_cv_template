@@ -31,7 +31,7 @@
 % Optional profile picture
 \cvprofilepic{pics/profile}
 
-% Personnal info
+% Personal info
 \cvbirthday{January 1st 1970}
 \cvaddress{Paris, France}
 \cvphone{+33 6 xx xx xx xx}
@@ -82,10 +82,10 @@
 	\profilesection{Programming skills}
 	\pointskill{}{\LaTeX}{4}[4]
 	\pointskill{}{Web development}{3}[4]
-	\skill[1em]{\faCompress}{JavaScript}
-	\skill[1em]{\faCompress}{React}
-	\skill[1em]{\faCompress}{Php}
-	\skill[1em]{\faCompress}{HTML \& CSS}
+	\skill[1em]{\faAngleRight}{JavaScript}
+	\skill[1em]{\faAngleRight}{React}
+	\skill[1em]{\faAngleRight}{Php}
+	\skill[1em]{\faAngleRight}{HTML \& CSS}
 	\pointskill{}{Python}{3}[4]
 
 	\profilesection{Wheel charts}
@@ -105,57 +105,69 @@
 
 \cvsection{section}
 \cvsubsection{Subsection}
+
+\cvsection{Standard CV items}
+\cvsubsection{CV items with logo}
+
+% It is preferred for logos to be horizontally shaped, but do as you wish
+
+% \begin{cvtable}[<array-stretch>] ... \end{cvtable}
 \begin{cvtable}
+	% \cvitemlogo[<top-spacing>]{<logo>}{<dates>}{<title>}{<location>}{<optional: description>}
+	\cvitemlogo{pics/google.png}{<dates>}{<cvitemlogo-title>}{<location>}{<optional: description>}
+	\cvitemlogo{pics/google.png}{<dates>}{Multi-line description}{<location>}{It also is possible to have a lot of this to say and for the description text to take multiple lines. It still looks awesome !}
+	\cvitemlogo{}{<dates>}{No logo}{<location>}{Leave logo argument empty to keep the same margin, without logo.}
+	\cvitemlogo{pics/google.png}{<dates>}{Without description and location}{}{}
+\end{cvtable}
+
+\cvsubsection{CV items without logo}
+
+\begin{cvtable}
+	% \cvitem[<top-spacing>]{<dates>}{<cv-item title>}{<location>}{<optional: description>}
 	\cvitem{<dates>}{<cv-item title>}{<location>}{<optional: description>}
+	\cvitem{<dates>}{Multi-line description}{<location>}{It also is possible to have a lot of this to say and for the description text to take multiple lines. It still looks awesome !}
+	\cvitem{<dates>}{Without description and location}{}{}
 \end{cvtable}
 
-\cvsection{cvitem}
-\cvsubsection{Multi-line with longer description}
+\cvsubsection{CV items without logo and date in front}
+
 \begin{cvtable}
-	\cvitem{date}{Description}{location}{Some longer and more detailed
-		description, that takes two lines of space instead of only one.}
-	\cvitem{date}{Description}{location}{Some longer and more detailed
-		description, that takes two lines of space instead of only one.}
-	\cvitem{date}{Description}{location}{Some longer and more detailed
-		description, that takes two lines of space instead of only one.}
+	% \cvitembis[<top-spacing>]{<dates>}{<cv-item title>}{<location>}{<optional: description>}
+	\cvitembis{<dates>}{<cv-item title>}{<location>}{<optional: description>}
+	\cvitembis{<dates>}{Multi-line description}{<location>}{It also is possible to have a lot of this to say and for the description text to take multiple lines. It still looks awesome !}
+	\cvitembis{<dates>}{Without description and location}{}{}
 \end{cvtable}
 
-\cvsubsection{One-line without description}
-\begin{cvtable}
-	\cvitem{Award}{One-line description}{Sponsor}{}
-	\cvitem{Award}{One-line description}{Sponsor}{}
-	\cvitem{Award}{One-line description}{Sponsor}{}
-\end{cvtable}
-
-\cvsection{cvitemshort}
 \cvsubsection{One-line}
-\begin{cvtable}
-	\cvitemshort{Key}{Some further description}
-	\cvitemshort{Key}{Some further description}
-	\cvitemshort{Key}{Some further description}
-\end{cvtable}
 
-\cvsubsection{Multi-line with longer description}
 \begin{cvtable}
-	\cvitemshort{Key}{Some further description. Can fill even more than
-		only one single line while still keeping the correct indendation level.}
-	\cvitemshort{Key}{Some further description. Can fill even more than
-		only one single line while still keeping the correct indendation level.}
+	\cvitemshort{Key}{Some further description}
 	\cvitemshort{Key}{Some further description. Can fill even more than
 		only one single line while still keeping the correct indendation level.}
 \end{cvtable}
 
-\cvsection{cvpubitem}
+\cvsection{Publication CV items}
+
 \begin{cvtable}
+	% \cvpubitem[<top-spacing>]{<title>}{<author>}{<journal>}{<year>}
 	\cvpubitem{Publication title}{Authors}{Journal}{Year}
-	\cvpubitem{Publication title}{Authors}{Journal}{Year}
-	\cvpubitem{Publication title that is spanning over multiple lines and still
-		does not look too bad}{Authors}{Journal}{Year}
+	\cvpubitem{Publication title that is spanning over multiple lines and still does not look too bad}{Authors}{Journal}{Year}
+\end{cvtable}
+
+\cvsubsection{And with date in front}
+
+\begin{cvtable}
+	% \cvpubitembis[<top-spacing>]{<title>}{<author>}{<journal>}{<year>}
+	\cvpubitembis{Publication title}{Authors}{Journal}{Year}
+	\cvpubitembis{Publication title that is spanning over multiple lines and still does not look too bad}{Authors}{Journal}{Year}
 \end{cvtable}
 
 
 \newpage
 \makebacksidebar
+
+\cvsection{Some back page stuff}
+\cvsubsection{Same template as the front page !}
 
 
 \end{document}

@@ -336,7 +336,7 @@
 	\endtabularx
 }
 
-% CV list environment
+% \cvtable[<array-stretch>]
 \newenvironment{cvtable}[1][1]{
 	\renewcommand{\arraystretch}{#1}
 	\begin{tabular*}{\textwidth}{@{\extracolsep{\fill}}ll}
@@ -344,41 +344,87 @@
 	\end{tabular*}
 }
 
-% | <keyword>      <one-line description>            |
-% use parbox if text needs to use multiple lines
-\newcommand{\cvitemshort}[2]{
-	\parbox[t]{0.17\textwidth}{\raggedright #1}
-	& \parbox[t]{0.81\textwidth}{#2} \\}
-
-% | <date>         <bold-title>  \hfill  <location>  |
-% |                <longer description>              |
-% or, if description is empty:
-% | <date>         <title>       \hfill  <location>  |
-\newcommand{\cvitem}[4]{
-	\parbox[t]{0.17\textwidth}{\raggedright #1} &
-	\parbox[t]{0.81\textwidth}{
-		\if\relax\detokenize{#4}\relax
-			\parbox[t]{\linewidth-\widthof{\footnotesize #3}-1em}{\raggedright #2}
-		\hfill {\footnotesize#3}
-		\else
-			\parbox{\linewidth-\widthof{\footnotesize #3}-1em}{
-				\raggedright \textbf{#2}
-			} \hfill {\footnotesize#3} \\
-			\textcolor{itemtextcolor}{#4}%\vspace{\parsep}%
-		\fi
-	}\\
+% \cvitemlogo[<top-spacing>]{<logo>}{<dates>}{<title>}{<location>}{<optional: description>}
+% | <logo>   <bold-title>, <location>         <date> |
+% |          <description>                           |
+\newcommand{\cvitemlogo}[6][0.5em]{
+	\ifthenelse{\equal{#1}{}}{}{\vspace{#1}}
+	\parbox[c]{0.17\linewidth}{ % space for logo, incl logo if arg not empty
+		\ifthenelse{\equal{#2}{}}{}{\includegraphics[width=\linewidth]{#2}}
+	}
+	&
+	\parbox{0.81\linewidth}{
+		\parbox{\linewidth-\widthof{#3}-1em}{ % leave space for the date
+			\raggedright\textbf{#4}
+			\ifthenelse{\equal{#5}{}}{}{, #5} % , <date> if arg not empty
+		} \hfill \textbf{#3}
+		\ifthenelse{\equal{#6}{}}{}{ % <description> if arg not empty
+			\\ \textcolor{itemtextcolor}{#6}
+		}
+	} \\
 }
 
-% publication item
-% \cvpubitem{<title>}{<author>}{<journal>}{<year>} will produce
+% \cvitem[<top-spacing>]{<date>}{<title>}{<location>}{<description>}
+\newcommand{\cvitem}[5][0.5em]{
+	\ifthenelse{\equal{#1}{}}{}{\vspace{#1}}
+	\parbox{\linewidth}{
+		\parbox{\linewidth-\widthof{#2}-1em}{ % leave space for the date
+			\raggedright\textbf{#3}
+			\ifthenelse{\equal{#4}{}}{}{, #4} % , <date> if arg not empty
+		} \hfill \textbf{#2}
+		\ifthenelse{\equal{#5}{}}{}{ % <description> if arg not empty
+			\\ \textcolor{itemtextcolor}{#5}
+		}
+	} \\
+}
+
+% \cvitembis[<top-spacing>]{<date>}{<title>}{<location>}{<description>}
+% | <date>         <bold-title>  \hfill  <location>  |
+% |                <description>                     |
+\newcommand{\cvitembis}[5][0.5em]{
+	\ifthenelse{\equal{#1}{}}{}{\vspace{#1}}
+	\parbox[t]{0.17\textwidth}{\raggedright #2}
+	&
+	\parbox[t]{0.81\textwidth}{
+		\parbox{\linewidth-\widthof{#4}-1em}{ % leave space for the date
+			\raggedright \textbf{#3}
+		} \hfill #4
+		\ifthenelse{\equal{#5}{}}{}{
+			\\ \textcolor{itemtextcolor}{#5}
+		}
+	} \\
+}
+
+% | <keyword>      <one-line description>            |
+% use parbox if text needs to use multiple lines
+\newcommand{\cvitemshort}[3][0.5em]{
+	\ifthenelse{\equal{#1}{}}{}{\vspace{#1}}
+	\parbox[t]{0.17\textwidth}{\raggedright #2}
+	& \parbox[t]{0.81\textwidth}{#3} \\
+}
+
+% \cvpubitem[<top-spacing>]{<title>}{<author>}{<journal>}{<year>}
+\newcommand{\cvpubitem}[5][0.5em]{
+	\ifthenelse{\equal{#1}{}}{}{\vspace{#1}}
+	\parbox{\linewidth}{
+		\parbox{\linewidth-\widthof{#5}-1em}{ % leave space for the date
+			\raggedright \textbf{#2}
+		} \hfill #5
+		\textit{#3} \par #4
+	} \\
+}
+
+% \cvpubitembis[<top-spacing>]{<title>}{<author>}{<journal>}{<year>}
 % | <year>         <bold title>                      |
 % |                <italic author>                   |
 % |                <journal>                         |
-\newcommand{\cvpubitem}[4]{
-	\parbox[t]{0.17\textwidth}{\raggedright #4} &
+\newcommand{\cvpubitembis}[5][0.5em]{
+	\ifthenelse{\equal{#1}{}}{}{\vspace{#1}}
+	\parbox[t]{0.17\textwidth}{\raggedright #5}
+	&
 	\parbox[t]{0.81\textwidth}{
-		\textbf{#1} \par \textit{#2} \par #3 \vspace{\parsep}
-	}\\
+		\textbf{#2} \par \textit{#3} \par #4
+	} \\
 }
 
 
@@ -386,7 +432,7 @@
 %                             SIDEBAR LAYOUT
 %---------------------------------------------------------------------------
 
-% === SIDEBAR & BACKGROUD === &
+% === SIDEBAR & BACKGROUD === %
 
 \newcommand{\drawSidebarBG}{
 	\AddToShipoutPictureBG*{
