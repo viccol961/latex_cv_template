@@ -1,6 +1,6 @@
 \documentclass[
     a4paper,
-	% maincolor=cvgreen,
+	% maincolor=green,
 	% sidecolor=gray!50,
 	% sectioncolor=red,
 	% subsectioncolor=orange,
@@ -9,7 +9,7 @@
 	% topbottommargin=0.03\paperheight,
 	% leftrightmargin=20pt,
 	% profilepicsize=4.5cm,
-	profilepicborderwidth=2pt,
+	% profilepicborderwidth=3.5pt,
 ]{cv}
 
 \usepackage{microtype}
@@ -47,7 +47,6 @@
 % If using pdfLaTeX, fontawesome icons available
 
 
-
 %---------------------------------------------------------------------------
 %                            SIDEBAR 1st PAGE
 %---------------------------------------------------------------------------
@@ -58,25 +57,24 @@
 	% flags available at https://github.com/gosquared/flags
 	\graphicspath{{pics/}}
 
-	\profilesection{Languages}
+	\sidebarsection{Languages}
 	\namedskill{\flag{FR.png}}{French}{Native}
 	\namedskill{\flag{GB.png}}{English}{Bilingual}
 	\pointskill{\flag{ES.png}}{Spanish}{3}
 	\pointskill{\flag{CN.png}}{Mandarin}{2}
 
-	\profilesection{Achievements}
+	\sidebarsection{Achievements}
 	\skill{\faCar}{Driver's license}
 	\skill{\faPlane}{Private Pilot Licence}
 	\skill{\faGraduationCap}{Cambridge C1}
 
-	\profilesection{Programming skills}
-	\pointskill{}{\LaTeX}{4}[4]
-	\pointskill{}{Web development}{3}[4]
-	\skill[1em]{\faAngleRight}{JavaScript}
-	\skill[1em]{\faAngleRight}{React}
-	\skill[1em]{\faAngleRight}{Php}
-	\skill[1em]{\faAngleRight}{HTML \& CSS}
-	\pointskill{}{Python}{3}[4]
+	\sidebarsection{Wheel charts}
+	\wheelchart{3.7em}{2em}{
+	20/3em/maincolor!50/Chill,
+	15/3em/maincolor!15/Play,
+	30/4em/maincolor!40/Sleep,
+	20/3em/maincolor!20/Eat
+	}
 }
 
 

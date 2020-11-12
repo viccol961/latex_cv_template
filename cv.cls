@@ -15,11 +15,9 @@
 % === COLORS === %
 
 \definecolor{cvblue}{HTML}{0E5484}
-\definecolor{cvgreen}{HTML}{007170}
-\definecolor{cvred}{HTML}{8B0000}
 \definecolor{cvsidecolor}{HTML}{E7E7E7}
 \definecolor{cvsectioncolor}{HTML}{0395DE}
-\definecolor{cvsubsectioncolor}{HTML}{4D4D4D}
+\definecolor{cvsubsectioncolor}{HTML}{4F4F4F}
 % Default values
 \colorlet{maincolor}{cvblue}
 \colorlet{sidecolor}{cvsidecolor}
@@ -63,7 +61,7 @@
 \setlength{\profilepicsize}{0.7\sidebarwidth}
 \DeclareOptionX{profilepicsize}{\setlength{\profilepicsize}{#1}}
 \newlength\profilepicborderwidth
-\setlength{\profilepicborderwidth}{3.5pt}
+\setlength{\profilepicborderwidth}{2pt}
 \DeclareOptionX{profilepicborderwidth}{\setlength{\profilepicborderwidth}{#1}}
 
 
@@ -131,7 +129,7 @@
     {\color{subsectioncolor}\normalfont\large}{}{0pt}{}
 
 % Left column section
-\newcommand*{\profilesection}[1]{\subsubsection*{#1}}
+\newcommand*{\sidebarsection}[1]{\subsubsection*{#1}}
 \titleformat{\subsubsection}
 	{\color{pseccolor}\normalfont\huge}{}{0pt}{\color{pseccolor}\sectionline}
 % "starred version kills the indentation of the paragraph following the title"
@@ -217,7 +215,10 @@
 }
 
 % About me, constrain text
-\newcommand{\aboutme}[1]{\parbox[b]{\linewidth}{#1}}
+\newcommand{\aboutme}[1]{
+	\sidebarsection{About Me}
+	\parbox[b]{\linewidth}{#1}
+}
 
 % Uniform icon style
 \newcommand{\cvicon}[1]{
@@ -447,10 +448,6 @@
 		\end{tikzpicture}
 	}
 }
-
-\newenvironment{sidebarminipage}
-	{\begin{minipage}{\sidebartextwidth}}
-	{\end{minipage}}
 
 \newenvironment{sidebar}{
 	\drawSidebarBG
